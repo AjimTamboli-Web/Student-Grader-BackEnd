@@ -159,6 +159,8 @@ package com.StudentGrader.Controller;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -179,6 +181,8 @@ import jakarta.mail.MessagingException;
 @CrossOrigin(origins = "https://grader-frontend-final.vercel.app", allowCredentials = "true")
 public class QuizController {
 
+	Logger log = LoggerFactory.getLogger(QuizController.class);
+	
     @Autowired
     private Questionrepo questionRepo;
 
@@ -244,10 +248,12 @@ public class QuizController {
         studentRepo.save(student);
 
         // Send quiz completion email
-        System.out.println("sending the completion score email....");
+        log.info("sending the completion score email....");
+//        System.out.println("sending the completion score email....");
         mailSenderService.sendQuizCompletionEmail(student.getEmail(), student.getName(), score);
 
-        System.out.println("Final Score: " + score);
+        log.info("Final Score: {}", score);
+//        System.out.println("Final Score: " + score);
         return score;
     }
 }

@@ -18,6 +18,8 @@ package com.StudentGrader.Service;
 import jakarta.mail.MessagingException;
 import jakarta.mail.internet.MimeMessage;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
@@ -26,6 +28,8 @@ import org.springframework.stereotype.Service;
 @Service
 public class MailSenderService {
 
+	Logger log = LoggerFactory.getLogger(MailSenderService.class);
+	
     @Autowired
     private JavaMailSender mailSender;
 
@@ -45,8 +49,10 @@ public class MailSenderService {
 
     // Utility method to send HTML email
     private void sendHtmlEmail(String toEmail, String subject, String htmlBody) throws MessagingException {
-        System.out.println("Sending email to: " + toEmail + " with subject: " + subject);
+//        System.out.println("Sending email to: " + toEmail + " with subject: " + subject);
 
+        log.info("Sending email to: {}  with subject: {}",toEmail , subject);
+        
         MimeMessage message = mailSender.createMimeMessage();
         MimeMessageHelper helper = new MimeMessageHelper(message, "utf-8");
 
@@ -57,7 +63,8 @@ public class MailSenderService {
 
         mailSender.send(message);
 
-        System.out.println("Email sent successfully to: " + toEmail);
+        log.info("Email sent successfully to: {}" , toEmail);
+//        System.out.println("Email sent successfully to: " + toEmail);
     }
 
    //HTML build for welcome Email.
