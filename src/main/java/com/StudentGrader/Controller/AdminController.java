@@ -15,7 +15,7 @@ import java.util.stream.Collectors;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
-@CrossOrigin(origins = "http://localhost:5173", allowCredentials = "true")
+@CrossOrigin(origins = "https://grader-frontend-final.vercel.app", allowCredentials = "true")
 @RestController
 @RequestMapping("/admin")
 public class AdminController {
