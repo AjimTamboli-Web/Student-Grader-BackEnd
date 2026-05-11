@@ -176,7 +176,7 @@ import jakarta.mail.MessagingException;
 
 @RestController
 @RequestMapping("/quiz")
-@CrossOrigin(origins="*")
+@CrossOrigin(origins = "https://grader-frontend-final.vercel.app", allowCredentials = "true")
 public class QuizController {
 
     @Autowired

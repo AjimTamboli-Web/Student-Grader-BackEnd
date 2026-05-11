@@ -107,7 +107,7 @@ import jakarta.mail.MessagingException;
 
 @RequestMapping("/students")
 @RestController
-@CrossOrigin(origins = "*")
+@CrossOrigin(origins = "https://grader-frontend-final.vercel.app", allowCredentials = "true")
 public class StudentContoller {
 
     @Autowired
