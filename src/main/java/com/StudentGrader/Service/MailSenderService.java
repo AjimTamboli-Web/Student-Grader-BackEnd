@@ -46,7 +46,7 @@ public class MailSenderService {
                                         int finalScore)
             throws IOException {
 
-        String subject = "Quiz Completed! Your Final Score";
+        String subject = "Quiz Completed!";
         String body = buildQuizCompletionEmailHtml(studentName, finalScore);
 
         sendHtmlEmail(toEmail, subject, body);
